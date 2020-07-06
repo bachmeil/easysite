@@ -83,7 +83,7 @@
 						response.text().then(function(text) {
 							storedText = text;
 							if (storedText == "404: Not Found") {
-								storedText = "File does not exist. You need to add " + fn + " to your repo.";
+								storedText = "File does not exist. You need to add " + fn + ".md to your repo.";
 							}
 			        document.getElementById('out').innerHTML = md.render(storedText);
 						});
