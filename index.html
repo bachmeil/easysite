@@ -82,6 +82,9 @@
 				fetch(filename).then(function(response) {
 						response.text().then(function(text) {
 							storedText = text;
+							if (storedText == "404: Not Found") {
+								storedText = "File does not exist. You need to add " + filename + " to your repo.";
+							}
 			        document.getElementById('out').innerHTML = md.render(storedText);
 						});
 					});
