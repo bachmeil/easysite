@@ -63,7 +63,6 @@
   <div id="out"></div>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-	const username = "bachmeil";
         const tm = texmath.use(katex);
         const md = markdownit().use(tm, { engine: katex,
                                           delimiters:'dollars',
@@ -71,7 +70,7 @@
                                         });
 				var url = new URL(document.location.href);
 				var fn = Array.from(url.searchParams)[0][0];
-				var filename = "https://raw.githubusercontent.com/" + username + url.pathname + "master/" + fn + ".md";
+				var filename = "https://raw.githubusercontent.com/" + url.host.split(".")[0] + url.pathname + "master/" + fn + ".md";
 				var storedText;
 
 				fetch(filename).then(function(response) {
