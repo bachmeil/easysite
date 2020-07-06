@@ -69,7 +69,12 @@
                                           katexOptions: { macros: {"\\RR": "\\mathbb{R}"} }
                                         });
 				var url = new URL(document.location.href);
-				var fn = Array.from(url.searchParams)[0][0];
+	    			var sp = Array.from(url.searchParams);
+	    			var fn = if (sp.length == 0) {
+					"index"
+				} else {
+					sp[0][0];
+				}
 				var filename = "https://raw.githubusercontent.com/" + url.host.split(".")[0] + url.pathname + "master/" + fn + ".md";
 				var storedText;
 
