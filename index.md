@@ -1,3 +1,7 @@
-# easysite
+# How To Use easysite to Create a Website
 
-[Example](?example)
+[Click here for full instructions](?instructions)
+
+# Repo Holding A Full Example
+
+[easysite example](https://bachmeil.github.io/exsite)
