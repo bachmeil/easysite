@@ -7,3 +7,5 @@ I created this project in the attempt to make it as easy as possible to create a
 - You want full control over the CSS and the design of your site.
 
 Rather than explaining the directions here, I'm going to practice dogfooding, and send you over to [the website for this repo](https://bachmeil.github.io/easysite/), which was created using easysite.
+
+You can view [an example easysite website here](https://github.com/bachmeil/exsite).
