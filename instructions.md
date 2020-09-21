@@ -10,7 +10,7 @@ You now have a website working.
 - Add `index.html` from this repo to the `docs/` folder of your repo.
 - Add markdown files at the top level. You can do that by clicking the "Add file" button on the code page. I recommend creating a markdown file on your local computer and then pasting into the editor. However, you can type into the editor directly if you want. That is in fact how I'm creating this page. If you want to create a site on an iPad, for instance, that is your only option. Be sure to set "Soft wrap" for the Line Wrap Mode or it will not be fun to type into the editor.
 - View your pages at `https://username.github.io/reponame/?file` where `username` is your Github username and `file` is the name (without the .md extension) of your markdown file.
-- You probably want to create an index page. If you call it `index.md`, it will be rendered when you go to `https://username.github.io`. You can link to other pages with the markdown [page description](?file). Yes, you really a question mark followed by letters really is a valid way to refer to a URL in markdown.
+- You probably want to create an index page. If you call it `index.md`, it will be rendered when you go to `https://username.github.io`. You can link to other pages with the markdown `[page description](?file)`. Yes, a question mark followed by letters really is a valid way to refer to a URL in markdown.
 
 # How it works
 
