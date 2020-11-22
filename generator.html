@@ -1,0 +1,192 @@
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Static HTML Generator</title>
+  <style type="text/css" media="screen" id="css">
+		body {
+			margin: auto;
+			max-width: 800px;
+			margin-top: 20px;
+			margin-bottom: 90px;
+		}
+
+		code {
+			font-size: 130%;
+		}
+
+		pre > code {
+			padding: .2rem .5rem;
+			margin: 0 .2rem;
+			white-space: nowrap;
+			border: 1px solid gray;
+			display: block;
+			padding: 1rem 1.5rem;
+			white-space: pre; 
+		}
+		
+		textarea {
+			font-size: 130%;
+			width: 100%;
+			height: 24em;
+			padding: 8px;
+			border-radius: 6px;
+			border: 1px solid gray;
+		}
+	</style>
+</head>
+<body>
+	<button onclick="dl()">Download HTML</button> 
+	<button onclick="clearIt()">Clear</button> 
+	<button onclick="reload()">Load Backup</button><br>
+	<textarea id="markdown"></textarea>
+	<textarea id="foo" style="display:none;">
+# Markdown 
+
+This is a **markdown document**. I think you of all people should know what *that* means.
+Some things I like about it:
+
+- It's lightweight.
+- Everyone already knows it.
+- It's heavily supported.
+
+## Equations
+
+It has equation support:
+$$y_{t} = \nu_{t}$$
+Even inline equations, LOL: $y_{t} = \xi_{t}$.
+
+## Code
+
+And code support, as you'd expect of markdown:
+
+```
+print("how are you")
+print(3+2.4)
+y$x <- z$w
+```
+
+And inline code: `print(6*7.5)`.
+</textarea>
+  <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+		window.onload = function() {
+			localStorage["backup"] = localStorage["content"];
+		}
+
+		function preview() {
+			document.getElementById('content').innerHTML =
+      marked(document.getElementById('markdown').value);
+      MathJax.typeset()
+		}
+		
+		setInterval(preview, 1000);
+		
+		function save() {
+			localStorage["content"] = document.getElementById('markdown').value;
+		}
+		
+		setInterval(save, 1000);
+		
+		function clearIt() {
+			if (confirm("This will delete all data in the textarea.\n\nHit OK if this is really what you want.")) {
+				document.getElementById("markdown").value = "";
+			}
+		}
+		
+		function dl() {
+			var blob = new Blob(
+				[ document.getElementById('head').value + 
+				marked(document.getElementById('markdown').value) +
+				document.getElementById('footer').value ],
+				{ type : "text/plain;charset=utf-8" });
+			const url = window.URL.createObjectURL(blob);
+			const a = document.createElement('a');
+			a.style.display = 'none';
+			a.href = url;
+			a.download = 'file.html';
+			document.body.appendChild(a);
+			a.click();
+			window.URL.revokeObjectURL(url);
+		}
+		
+		function reload() {
+			if (confirm("This will overwrite all data with the value in storage.\nThere is no way to recover your current text if you\nchange your mind.\n\nDo you want to continue?")) {
+				document.getElementById('markdown').value = localStorage["backup"];
+			}
+		}
+  </script>
+	<script>
+	MathJax = {
+		tex: {
+			inlineMath: [['$', '$'], ['$$', '$$']]
+		},
+		svg: {
+			fontCache: 'global'
+		}
+	};
+	</script>
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+	</script>
+	
+<textarea id="head" style="display:none;">
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+  <style type="text/css" media="screen">
+		body {
+			margin: auto;
+			max-width: 800px;
+			margin-top: 20px;
+			margin-bottom: 90px;
+		}
+
+		code {
+			font-size: 130%;
+		}
+
+		pre > code {
+			padding: .2rem .5rem;
+			margin: 0 .2rem;
+			white-space: nowrap;
+			border: 1px solid gray;
+			display: block;
+			padding: 1rem 1.5rem;
+			white-space: pre; 
+		}
+		
+		textarea {
+			font-size: 130%;
+			width: 100%;
+			height: 24em;
+			padding: 8px;
+			border-radius: 6px;
+			border: 1px solid gray;
+		}
+	</style>
+</head>
+<body>
+</textarea>
+
+<textarea id="footer" style="display:none;">
+	<script>
+	MathJax = {
+		tex: {
+			inlineMath: [['$', '$'], ['$$', '$$']]
+		},
+		svg: {
+			fontCache: 'global'
+		}
+	};
+	</script>
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+	</script>
+</body>
+</html>
+</textarea>
+
+</body>
+</html>
